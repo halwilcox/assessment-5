@@ -4,9 +4,8 @@
     <title>Back End Assessment</title>
   </head>
   <h1>Welcome to my Assessment</h1>
-  <h3>Your fortune is a click away..</h3>
   <body class="container">
-    <button id="complimentButton">Fortune Button</button>
+    <button id="complimentButton">Get a compliment</button>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -17,39 +16,29 @@
               alert(data);
             });
       };
+    </script>
+  <h3>Your fortune is a click away..</h3>
+    <button id="fortuneButton">Fortune Button</button>
 
-      </script>
-
-    <h3>What is your lucky number?</h3>
-    <form>
-      <input 
-      type='text'
-      id="Name"
-      placeholder="Name"/>
-      <input 
-      type='text'
-      id="sign"
-      placeholder='What is your sign?'/>
-      <input 
-      type='text'
-      id="color"
-      placeholder='Favorite color'/>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      document.getElementById("fortuneButton").onclick = function () {
+        axios.get("http://localhost:4000/api/fortune/")
+            .then(function (response) {
+              const data = response.data;
+              alert(data);
+            });
+      };
+ </script>
+ <br>
+ <br>
+     <form id='add-fortune-form'>
+      <input type='text' id='fortune-input' />
+      <button type='submit' id='add-fortune-btn'>ADD A FORTUNE</button>
     </form>
-    <button>submit</button>
-    
-    <form id = luckyarr></form>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-      <script>
-      document.getElementById("lucky").onclick = function () {
-        axios.get("http://localhost:4000/api/compliment/").then(function (response) 
-        {const data = response.data;
-          alert(data);
-        });
-      }
-</script>
-
-<h1>Family</h1>
+  
+  </script>
+<h3>Family</h3>
 <ul id="people" class=""></ul>
 
 <button id="button">Haleigh's Family</button>
@@ -72,6 +61,8 @@
           '<li class="text-danger">' + err.message + "</li>";
       });
   };
+  
+
 </script>
   </body>
 </html>
